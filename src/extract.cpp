@@ -145,14 +145,17 @@ std::vector<double> bilinearInt(const double& x, const double& y,
 	bool n2 = std::isnan(v12);
 	bool n3 = std::isnan(v21);
 	bool n4 = std::isnan(v22);
-	if (std::isnan(x) || std::isnan(y)) {
-		goto NAN_return;
-	}
+
 	double dx = (x2 - x1);
 	bool intx = dx > 0;
 	double dy = (y1 - y2);
 	bool inty = dy > 0;
 	double w11, w12, w21, w22;
+	
+	if (std::isnan(x) || std::isnan(y)) {
+		goto NAN_return;
+	}
+
 	if (weights) {
 		v11 = 1;
 		v12 = 1;
